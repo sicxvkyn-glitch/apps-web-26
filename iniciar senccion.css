@@ -1,0 +1,105 @@
+/* Estilo general de la página */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf4f4;
+    text-align: center;
+    margin: 0;
+}
+
+/* Encabezado */
+
+header {
+    background-color: #315c72;
+    color: white;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+header p {
+    font-size: 16px;
+}
+
+/* Formulario */
+
+main {
+    padding-top: 60px;
+}
+
+section {
+    margin: 20px;
+}
+
+form {
+    background-color: white;
+    width: 320px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+label {
+    font-size: 17px;
+    color: #315c72;
+}
+
+input {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #9bbec8;
+    border-radius: 5px;
+}
+
+/* Botón */
+
+button {
+    background-color: #315c72;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #244657;
+}
+
+/* Crear cuenta */
+
+#registro {
+    margin-top: 70px;
+}
+
+#registro h3 {
+    font-size: 18px;
+    color: #315c72;
+}
+
+#registro p {
+    font-size: 14px;
+}
+
+#registro a {
+    color: #315c72;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#registro a:hover {
+    text-decoration: underline;
+}
+
+/* Pie de página */
+
+footer {
+    margin-top: 60px;
+    background-color: #315c72;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+}
