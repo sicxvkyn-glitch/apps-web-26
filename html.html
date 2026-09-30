@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Roles - Legal Manager</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           PALETA DE COLORES
+           ===================================================== */
+
+        :root {
+            --superficie: #FFFFFF;
+            --fondo: #DFDFE6;
+            --seleccion: #C6C5DF;
+            --destacado: #9F9EB3;
+            --terciario: #808091;
+            --texto-secundario: #62626F;
+            --superficie-oscura: #444444;
+            --texto-principal: #1F1F24;
+
+            --acento: #0F766E;
+            --exito: #2F855A;
+            --advertencia: #B7791F;
+            --error: #B91C1C;
+        }
+
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--fondo);
+            color: var(--texto-principal);
+
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 16px;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           TIPOGRAFÍAS
+           ===================================================== */
+
+        h1 {
+            font-family: "Raleway", sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--texto-principal);
+        }
+
+        h2 {
+            font-family: "Raleway", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--texto-principal);
+        }
+
+        h3,
+        .subtitulo {
+            font-family: "Raleway", sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--texto-principal);
+        }
+
+        p,
+        label,
+        input,
+        select,
+        th,
+        td {
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 16px;
+        }
+
+        .text-muted {
+            color: var(--texto-secundario) !important;
+        }
+
+
+        /* =====================================================
+           SISTEMA DE CUADRÍCULA
+           MATERIAL DESIGN 3
+           
+           4 columnas - pantallas pequeñas
+           8 columnas - pantallas medianas
+           12 columnas - pantallas grandes
+           ===================================================== */
+
+        .contenedor-principal {
+            width: 100%;
+            margin: 0 auto;
+
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+
+        /* 4 columnas */
+        @media (min-width: 576px) {
+
+            .contenedor-principal {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+        }
+
+
+        /* 8 columnas */
+        @media (min-width: 768px) {
+
+            .contenedor-principal {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+        }
+
+
+        /* 12 columnas */
+        @media (min-width: 1200px) {
+
+            .contenedor-principal {
+                padding-left: 48px;
+                padding-right: 48px;
+            }
+
+        }
+
+
+        /* =====================================================
+           ESPACIADOS
+           Basados en la guía:
+           4px - 8px - 16px - 24px - 32px - 48px
+           ===================================================== */
+
+        .espacio-4 {
+            margin: 4px;
+        }
+
+        .espacio-8 {
+            margin: 8px;
+        }
+
+        .espacio-16 {
+            margin: 16px;
+        }
+
+        .espacio-24 {
+            margin: 24px;
+        }
+
+        .espacio-32 {
+            margin: 32px;
+        }
+
+        .espacio-48 {
+            margin: 48px;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+           ===================================================== */
+
+        .navbar {
+            background-color: var(--texto-principal);
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        .navbar-brand {
+            font-family: "Raleway", sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 16px;
+        }
+
+        .nav-link:hover {
+            color: var(--seleccion) !important;
+        }
+
+
+        /* =====================================================
+           TARJETAS
+           ===================================================== */
+
+        .card {
+            background-color: var(--superficie);
+
+            border: none;
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 12px rgba(31, 31, 36, 0.08);
+        }
+
+
+        /* =====================================================
+           FORMULARIOS
+           ===================================================== */
+
+        .form-label {
+            color: var(--texto-principal);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-control,
+        .form-select {
+
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 16px;
+
+            color: var(--texto-principal);
+            background-color: var(--superficie);
+
+            border: 1px solid var(--terciario);
+            border-radius: 7px;
+
+            padding: 10px 12px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+
+            border-color: var(--acento);
+
+            box-shadow:
+                0 0 0 0.2rem rgba(15, 118, 110, 0.15);
+        }
+
+        .form-control::placeholder {
+            color: var(--texto-secundario);
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .btn {
+            font-family: "Roboto Flex", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+
+            border-radius: 7px;
+        }
+
+        .btn-principal {
+
+            background-color: var(--acento);
+            color: var(--superficie);
+
+            border: none;
+
+            padding: 10px 24px;
+        }
+
+        .btn-principal:hover {
+
+            background-color: #095C56;
+            color: var(--superficie);
+        }
+
+
+        .btn-editar {
+
+            background-color: var(--seleccion);
+            color: var(--texto-principal);
+
+            border: none;
+        }
+
+        .btn-editar:hover {
+
+            background-color: var(--destacado);
+            color: var(--texto-principal);
+        }
+
+
+        .btn-secondary {
+
+            background-color: var(--superficie-oscura);
+            color: var(--superficie);
+
+            border: none;
+        }
+
+        .btn-secondary:hover {
+
+            background-color: var(--texto-principal);
+            color: var(--superficie);
+        }
+
+
+        /* =====================================================
+           TABLA
+           ===================================================== */
+
+        .table {
+            margin-bottom: 0;
+            background-color: var(--superficie);
+        }
+
+        .table thead {
+
+            background-color: var(--texto-principal);
+            color: var(--superficie);
+        }
+
+        .table th {
+
+            font-weight: 600;
+            padding: 14px;
+        }
+
+        .table td {
+
+            padding: 14px;
+
+            color: var(--texto-principal);
+
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+
+            background-color: var(--seleccion);
+        }
+
+
+        /* =====================================================
+           ALERTA
+           ===================================================== */
+
+        .alert-success {
+
+            background-color: #E6F4EA;
+            color: var(--exito);
+
+            border: 1px solid var(--exito);
+
+            border-radius: 8px;
+        }
+
+
+        /* =====================================================
+           MODAL
+           ===================================================== */
+
+        .modal-content {
+
+            background-color: var(--superficie);
+
+            border: none;
+            border-radius: 12px;
+        }
+
+        .modal-header {
+
+            border-bottom:
+                1px solid var(--fondo);
+        }
+
+        .modal-footer {
+
+            border-top:
+                1px solid var(--fondo);
+        }
+
+        .modal-title {
+
+            font-family: "Raleway", sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            color: var(--texto-secundario);
+
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 575px) {
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .card {
+                border-radius: 10px;
+            }
+
+            .table {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                Legal Manager
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link active"
+                            href="#">
+
+                            Gestión de Roles
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
+
+    <main class="container contenedor-principal py-5">
+
+
+        <!-- TÍTULO -->
+
+        <div class="text-center mb-4">
+
+            <h1>
+                Gestión de Roles
+            </h1>
+
+            <p class="subtitulo">
+                Administración de roles de usuarios
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ALERTA
+             ================================================= -->
+
+        <div
+            id="mensaje"
+            class="alert alert-success text-center d-none"
+            role="alert">
+
+            ¡El rol fue asignado correctamente!
+
+        </div>
+
+
+
+        <!-- =================================================
+             FILA PRINCIPAL
+             ================================================= -->
+
+        <div class="row justify-content-center">
+
+
+            <!--
+                Bootstrap:
+                col-12 = pantalla pequeña
+                col-lg-10 = pantalla grande
+            -->
+
+            <div class="col-12 col-lg-10">
+
+
+                <!-- =================================================
+                     CARD: ASIGNAR ROL
+                     ================================================= -->
+
+                <div class="card p-4 mb-4">
+
+                    <h2 class="text-center mb-4">
+                        Asignar rol
+                    </h2>
+
+
+                    <form id="formulario">
+
+
+                        <div class="row">
+
+
+                            <!-- NOMBRE -->
+
+                            <div
+                                class="col-12 col-md-6 mb-3">
+
+                                <label
+                                    for="nombre"
+                                    class="form-label">
+
+                                    Nombre del usuario
+
+                                </label>
+
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="nombre"
+                                    placeholder="Ingresa el nombre"
+                                    required>
+
+                            </div>
+
+
+
+                            <!-- CORREO -->
+
+                            <div
+                                class="col-12 col-md-6 mb-3">
+
+                                <label
+                                    for="correo"
+                                    class="form-label">
+
+                                    Correo electrónico
+
+                                </label>
+
+
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="correo"
+                                    placeholder="correo@gmail.com"
+                                    required>
+
+                            </div>
+
+
+
+                            <!-- ROL -->
+
+                            <div
+                                class="col-12 mb-3">
+
+                                <label
+                                    for="rol"
+                                    class="form-label">
+
+                                    Seleccionar rol
+
+                                </label>
+
+
+                                <select
+                                    class="form-select"
+                                    id="rol"
+                                    required>
+
+                                    <option value="">
+                                        Selecciona un rol
+                                    </option>
+
+                                    <option value="Cliente">
+                                        Cliente
+                                    </option>
+
+                                    <option value="Abogado">
+                                        Abogado
+                                    </option>
+
+                                    <option value="Administrador">
+                                        Administrador
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- BOTÓN -->
+
+                        <div class="text-center mt-3">
+
+                            <button
+                                type="submit"
+                                class="btn btn-principal">
+
+                                Asignar rol
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CARD: TABLA
+                     ================================================= -->
+
+                <div class="card p-4">
+
+
+                    <h2 class="text-center mb-4">
+                        Usuarios y roles
+                    </h2>
+
+
+
+                    <div class="table-responsive">
+
+
+                        <table
+                            class="table table-bordered table-hover text-center align-middle">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Usuario
+                                    </th>
+
+                                    <th>
+                                        Correo
+                                    </th>
+
+                                    <th>
+                                        Rol
+                                    </th>
+
+                                    <th>
+                                        Acción
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody id="tablaUsuarios">
+
+
+                                <!-- USUARIO 1 -->
+
+                                <tr>
+
+                                    <td>
+                                        María López
+                                    </td>
+
+                                    <td>
+                                        maria@gmail.com
+                                    </td>
+
+                                    <td>
+                                        Cliente
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-editar btn-sm"
+                                            onclick="abrirModal(this)">
+
+                                            Editar
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- USUARIO 2 -->
+
+                                <tr>
+
+                                    <td>
+                                        Juan Pérez
+                                    </td>
+
+                                    <td>
+                                        juan@gmail.com
+                                    </td>
+
+                                    <td>
+                                        Abogado
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-editar btn-sm"
+                                            onclick="abrirModal(this)">
+
+                                            Editar
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+
+                                <!-- USUARIO 3 -->
+
+                                <tr>
+
+                                    <td>
+                                        Ana García
+                                    </td>
+
+                                    <td>
+                                        ana@gmail.com
+                                    </td>
+
+                                    <td>
+                                        Administrador
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-editar btn-sm"
+                                            onclick="abrirModal(this)">
+
+                                            Editar
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL PARA EDITAR
+         ===================================================== -->
+
+    <div
+        class="modal fade"
+        id="modalRol"
+        tabindex="-1"
+        aria-hidden="true">
+
+
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+
+
+                <!-- HEADER -->
+
+                <div class="modal-header">
+
+                    <h2 class="modal-title">
+                        Editar rol
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+
+
+                <!-- CONTENIDO -->
+
+                <div class="modal-body">
+
+
+                    <label
+                        for="nuevoRol"
+                        class="form-label">
+
+                        Seleccionar nuevo rol
+
+                    </label>
+
+
+                    <select
+                        id="nuevoRol"
+                        class="form-select">
+
+                        <option value="Cliente">
+                            Cliente
+                        </option>
+
+                        <option value="Abogado">
+                            Abogado
+                        </option>
+
+                        <option value="Administrador">
+                            Administrador
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer">
+
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-principal"
+                        onclick="guardarRol()">
+
+                        Guardar cambios
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="text-center">
+
+        <p>
+            Legal Manager
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         BOOTSTRAP JAVASCRIPT
+         ===================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           VARIABLES PARA EDITAR
+           ================================================= */
+
+        let filaSeleccionada = null;
+
+
+
+        /* =================================================
+           ASIGNAR NUEVO USUARIO
+           ================================================= */
+
+        document
+            .getElementById("formulario")
+            .addEventListener("submit", function(event) {
+
+
+                event.preventDefault();
+
+
+                /* Obtener datos */
+
+                let nombre =
+                    document.getElementById("nombre").value;
+
+                let correo =
+                    document.getElementById("correo").value;
+
+                let rol =
+                    document.getElementById("rol").value;
+
+
+                /* Obtener tabla */
+
+                let tabla =
+                    document.getElementById("tablaUsuarios");
+
+
+                /* Crear nueva fila */
+
+                let nuevaFila =
+                    document.createElement("tr");
+
+
+                nuevaFila.innerHTML = `
+
+                    <td>
+                        ${nombre}
+                    </td>
+
+                    <td>
+                        ${correo}
+                    </td>
+
+                    <td>
+                        ${rol}
+                    </td>
+
+                    <td>
+
+                        <button
+                            class="btn btn-editar btn-sm"
+                            onclick="abrirModal(this)">
+
+                            Editar
+
+                        </button>
+
+                    </td>
+
+                `;
+
+
+                /* Agregar fila */
+
+                tabla.appendChild(nuevaFila);
+
+
+                /* Mostrar mensaje */
+
+                let mensaje =
+                    document.getElementById("mensaje");
+
+                mensaje.classList.remove("d-none");
+
+
+                /* Ocultar mensaje después de unos segundos */
+
+                setTimeout(function() {
+
+                    mensaje.classList.add("d-none");
+
+                }, 3000);
+
+
+                /* Limpiar formulario */
+
+                document
+                    .getElementById("formulario")
+                    .reset();
+
+            });
+
+
+
+        /* =================================================
+           ABRIR MODAL
+           ================================================= */
+
+        function abrirModal(boton) {
+
+
+            /* Guardamos la fila seleccionada */
+
+            filaSeleccionada =
+                boton.closest("tr");
+
+
+            /* Obtenemos el rol actual */
+
+            let rolActual =
+                filaSeleccionada
+                    .cells[2]
+                    .textContent
+                    .trim();
+
+
+            /* Colocamos el rol en el select */
+
+            document
+                .getElementById("nuevoRol")
+                .value = rolActual;
+
+
+            /* Abrimos el modal */
+
+            let modal =
+                new bootstrap.Modal(
+                    document.getElementById("modalRol")
+                );
+
+
+            modal.show();
+
+        }
+
+
+
+        /* =================================================
+           GUARDAR CAMBIOS DEL ROL
+           ================================================= */
+
+        function guardarRol() {
+
+
+            /* Verificamos que exista una fila */
+
+            if (filaSeleccionada !== null) {
+
+
+                /* Obtenemos nuevo rol */
+
+                let nuevoRol =
+                    document
+                        .getElementById("nuevoRol")
+                        .value;
+
+
+                /* Cambiamos el rol */
+
+                filaSeleccionada
+                    .cells[2]
+                    .textContent = nuevoRol;
+
+
+                /* Mostrar mensaje */
+
+                let mensaje =
+                    document.getElementById("mensaje");
+
+
+                mensaje.textContent =
+                    "¡El rol fue actualizado correctamente!";
+
+
+                mensaje.classList.remove("d-none");
+
+
+                /* Ocultar mensaje */
+
+                setTimeout(function() {
+
+                    mensaje.classList.add("d-none");
+
+                    mensaje.textContent =
+                        "¡El rol fue asignado correctamente!";
+
+                }, 3000);
+
+
+                /* Cerramos modal */
+
+                let modalElement =
+                    document.getElementById("modalRol");
+
+
+                let modal =
+                    bootstrap.Modal
+                        .getInstance(modalElement);
+
+
+                modal.hide();
+
+
+                /* Limpiamos variable */
+
+                filaSeleccionada = null;
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
