@@ -1,0 +1,104 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Roles</title>
+</head>
+
+<body>
+
+    <center>
+
+        <header>
+            <h1>Gestión de Roles</h1>
+            <p>Administración de roles de usuarios</p>
+        </header>
+
+        <main>
+
+            <section>
+                <h2>Asignar rol</h2>
+
+                <form>
+
+                    <label for="nombre">Nombre del usuario:</label>
+                    <br>
+                    <input type="text" id="nombre" name="nombre">
+
+                    <br><br>
+
+                    <label for="correo">Correo electrónico:</label>
+                    <br>
+                    <input type="email" id="correo" name="correo">
+
+                    <br><br>
+
+                    <label for="rol">Seleccionar rol:</label>
+                    <br>
+                    <select id="rol" name="rol">
+                        <option value="">Selecciona un rol</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="abogado">Abogado</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+
+                    <br><br>
+
+                    <button type="submit">Asignar rol</button>
+
+                </form>
+            </section>
+
+            <br><br>
+
+            <section>
+                <h2>Usuarios y roles</h2>
+
+                <table border="1" width="600" height="180">
+
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>María López</td>
+                            <td>maria@gmail.com</td>
+                            <td>Cliente</td>
+                        </tr>
+
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>juan@gmail.com</td>
+                            <td>Abogado</td>
+                        </tr>
+
+                        <tr>
+                            <td>Ana García</td>
+                            <td>ana@gmail.com</td>
+                            <td>Administrador</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </section>
+
+        </main>
+
+        <br>
+
+        <footer>
+            <p>Legal Manager</p>
+        </footer>
+
+    </center>
+
+</body>
+</html>
+```
